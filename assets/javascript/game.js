@@ -14,13 +14,9 @@ let guessAmount = 24;
 let wins = 0;
 let underScore = [];
 
-// Dom manipulation
-let docUnderScore = document.getElementsByClassName("underscores");
-let docMissed = document.getElementsByClassName("letters-guessed");
 
 function resetGame() {
-	var words = ['crown', 'thirdeye', 'throat', 'heart', 'solarplexus', 'sacral', 'root'];
-
+	
 // Choose word randomly
 	
 	correctLetters = [];
@@ -64,7 +60,7 @@ for (let j = 0; j < chosenWord.length; j ++) {
 				if (userGuess == chosenWord.charAt(j)) {       //if the user guess matches a letter in the chosenWord
 					//store letter
 					correctLetters.push(userGuess); //stores correct user guess
-					console.log('array: ' + correctLetters);
+					console.log('correctLetters array: ' + correctLetters);
 					correctGuesses ++; // adds guess to the correct guess counter
 					wrongGuess = false;
 					//display in #underscores
@@ -88,17 +84,19 @@ for (let j = 0; j < chosenWord.length; j ++) {
 				//push to missed array
 					wrongLetters.push(userGuess); //stores wrong user guess
 					guessAmount --; // subtracts 1 guess from the user guess amount counter
-					console.log('array: ' + wrongLetters);
-					console.log('guess Amount: ' + guessAmount);
+					console.log('array of wrongLetters: ' + wrongLetters);
+					console.log('# of guesses left: ' + guessAmount);
 
 
 				}
 }
 
 
-			
+// document.querySelector("#demo").innerHTML = "Hello World!";
 
-	
+
+
+
 			
 	
 

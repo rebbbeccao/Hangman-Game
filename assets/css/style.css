@@ -1,0 +1,43 @@
+p {
+	text-align: center
+}
+
+body {
+	background-image: url('file:///Users/rebeccaao/UCIallgitrepositories/Hangman-Game/assets/images/blackwhite.jpg');
+	background-repeat: repeat;
+	background-position: center;
+
+}
+
+.headmaster {
+	background-color: #fafcf5;
+	height: 200px;
+	width: 100%;
+	
+}
+.row {
+	padding: 50px;
+}
+
+.col-sm-6 {
+	background-color: #fafcf5;
+}
+
+footer {
+	background-color: #fafcf5;
+	width: 100%
+	height: 150px;
+	margin: 0;
+}
+#footerdiv {
+	background-color: #fafcf5;
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+#footer-img {
+	display: block;
+	margin: auto;
+	height: 200px;
+}

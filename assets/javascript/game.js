@@ -145,11 +145,8 @@ function startGame() {
         document.getElementById('guess-remain').innerHTML = guessAmount;
         document.getElementById('incorrect-letters').innerHTML = wrongLetters;
 
-        //Game loose
+        //Game loss
         if (guessAmount == 0) {
-          // if amount of guesses is 0, game over - you lose!
-          // alert try again!
-          // reload the game
           gameLoose();
           console.log('game over');
         }

@@ -13,7 +13,7 @@ var words = [
 
 // Choose word randomly
 let randNum = Math.floor(Math.random() * words.length);
-let chosenWord = words[randNum];
+let chosenWord = words[randNum].toUpperCase();
 let correctLetters = [];
 let wrongGuess = true;
 let correctGuesses = 0;
@@ -30,8 +30,6 @@ let placeHolder = [];
 // };
 
 function resetGame() {
-  // Choose word randomly
-
   correctLetters = [];
   wrongGuess = true;
   correctGuesses = 0;
@@ -41,7 +39,7 @@ function resetGame() {
 
   var html = (document.getElementById('incorrect-letters').innerHTML = '');
   var html1 = (document.getElementById('guess-remain').innerHTML = guessAmount);
-  let chosenWord = words[randNum];
+  let chosenWord = words[randNum].toUpperCase();
   // Project underscores based on the length of the chosen word
   for (let i = 0; i < chosenWord.length; i++) {
     placeHolder[i] = '_';
@@ -70,7 +68,7 @@ function gameWin() {
 
 //Game Loose Here ****
 function gameLoose() {
-  spaceBarStart;
+  spaceBarStart();
 }
 
 // Spacebar start Here ****
@@ -95,48 +93,45 @@ function startGame() {
     document.getElementById('underscores').innerHTML = placeHolder;
     wrongGuess = true;
 
-    for (let g = 0; g < chosenWord.length; g++) {
-      if (userGuessUpper === chosenWord[g]) {
-        placeHolder[g] = userGuess;
-        console.log('match:' + g);
+    if (
+      correctLetters.indexOf(userGuessUpper) >= 0 ||
+      wrongLetters.indexOf(userGuessUpper) >= 0
+    ) {
+      console.log('duplicate correct guess or incorrect guess');
+    } else {
+      for (let i = 0; i < chosenWord.length; i++) {
+        if (chosenWord.charAt(i) === userGuessUpper) {
+          console.log('chosen word at i is: ' + chosenWord[i]);
+          placeHolder[i] = userGuessUpper;
+          correctLetters.push(userGuessUpper); //stores correct user guess
+          console.log('correctLetters array: ' + correctLetters);
+          console.log('placeholder updated = ' + placeHolder);
+          wrongGuess = false;
+          correctGuesses++; // adds guess to the correct guess counter
+        }
+        if (correctGuesses === chosenWord.length) {
+          gameWin();
+        }
       }
-    }
-    displayUnderscores();
+      if (wrongGuess == true) {
+        //if the users guess doesnt match the chosenWord
+        //store wrong guessed letter
+        //push to missed array
+        wrongLetters.push(userGuessUpper); //stores wrong user guess
+        guessAmount--; // subtracts 1 guess from the user guess amount counter
+        document.getElementById('guess-remain').innerHTML = guessAmount;
+        document.getElementById('incorrect-letters').innerHTML = wrongLetters;
 
-    // The user guess matches an index of the chosenWord
-    if (guessAmount == 0) {
-      // if amount of guesses is 0, game over - you lose!
-      // alert try again!
-      // reload the game
-      console.log('game over');
-    }
-
-    for (let j = 0; j < chosenWord.length; j++) {
-      if (userGuess == chosenWord.charAt(j)) {
-        //if the user guess matches a letter in the chosenWord
-        //store letter
-        correctLetters.push(userGuess); //stores correct user guess
-        console.log('correctLetters array: ' + correctLetters);
-        correctGuesses++; // adds guess to the correct guess counter
-        wrongGuess = false;
-        //display in #underscores
-        console.log('chosenWord.charAt(j): ' + chosenWord.charAt(j));
-        console.log('correct guesses amount:' + correctGuesses);
-        console.log('chosenWord @ J is: ' + chosenWord[j]);
-      }
-      if (correctGuesses === chosenWord.length) {
-        gameWin();
+        //Game loose
+        if (guessAmount == 0) {
+          // if amount of guesses is 0, game over - you lose!
+          // alert try again!
+          // reload the game
+          gameLoose();
+          console.log('game over');
+        }
       }
     }
-    if (wrongGuess == true) {
-      //if the users guess doesnt match the chosenWord
-      //store wrong guessed letter
-      //push to missed array
-      wrongLetters.push(userGuess); //stores wrong user guess
-      guessAmount--; // subtracts 1 guess from the user guess amount counter
-      console.log('array of wrongLetters: ' + wrongLetters);
-      console.log('# of guesses left: ' + guessAmount);
-    }
+    document.getElementById('underscores').innerHTML = placeHolder.join(' ');
   };
 }
-// document.querySelector("#demo").innerHTML = "Hello World!";

@@ -18,7 +18,8 @@
 		<!-- <img src="assets/images/hair.gif.png" alt="hair gif"> -->
 		<h1>Do you know your Chakras?</h1>
 		<h2>Play Chackra Hangman!</h2>
-		<h3>Press any key to begin</h3>
+		<h3 id='space-bar-start'></h3>
+
 
 	</section>
 
@@ -28,40 +29,62 @@
 			<!--left column-->
 			<div class="col-sm-6">
 				<div id="left-img">
+
 				</div>
 			</div>
 			<!--right collumn-->
 			<div class="col-sm-6">
-				<p id='loss'></p>
-				<p id='space-bar-start'></p>
 
-				<div id="wins"></div>
 
 				<p>Current Word: </p>
 
 				<p id="underscores"></p>
+				<div class="row">
+					<div class='col-sm-10'>
+						<p id="guess-remain-title">Number of guesses remaining: </p>
+					</div>
+					<div class='col-sm-2'>
+						<div id="guess-remain"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class='col-sm-9'>
+						<p>Leters already guessed: </p>
+					</div>
+					<div class='col-sm-3'>
+						<div id="incorrect-letters"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class='col-sm-10'>
+						<p>Wins:</p>
+					</div>
+					<div class="col-sm-2">
+						<p id='wins'>
+						</p>
+					</div>
 
-				<p>Number of guesses remaining: </p>
-
-				<div id="guess-remain"></div>
-
-				<p>Leters already guessed: </p>
-
-				<div id="incorrect-letters"></div>
-
+					<div class='col-sm-10'>
+						<p>Losses:</p>
+					</div>
+					<div class="col-sm-2">
+						<p id='losses'>
+						</p>
+					</div>
+				</div>
 			</div>
+
 		</div>
-	</div>
 
-	<!--footer main section-->
-	<footer>
-		<div id="footerdiv">
-			<img id="footer-img" src="assets/images/footer.png"></img>
-		</div>
-	</footer>
+		<!--footer main section-->
+		<footer>
+			<div id="footerdiv">
+				<img id="footer-img" src="assets/images/footer.png"></img>
+			</div>
+		</footer>
 
 
-	<script src="assets/javascript/game.js"></script>
+		<script src="assets/javascript/game.js"></script>
 </body>
 
 </html>

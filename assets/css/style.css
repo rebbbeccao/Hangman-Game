@@ -43,6 +43,7 @@ footer {
 }
 
 h1 {
+	padding-top: 20px;
 	text-align: center;
 }
 h2 {
@@ -50,4 +51,9 @@ h2 {
 }
 h3 {
 	text-align: center;
+	padding-top: 5px;
+}
+
+#guess-remain-title {
+margin: 0;
 }

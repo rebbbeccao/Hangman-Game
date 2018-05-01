@@ -2,32 +2,25 @@
 //==============================================================================================
 // Create an array of words
 var words = [
-  'crown',
-  'thirdeye',
-  'throat',
-  'heart',
-  'solarplexus',
-  'sacral',
-  'root'
+  'CROWN',
+  'THIRDEYE',
+  'THROAT',
+  'HEART',
+  'SOLARPLEXUS',
+  'SACRAL',
+  'ROOT'
 ];
 
 // Choose word randomly
-let randNum = Math.floor(Math.random() * words.length);
-let chosenWord = words[randNum].toUpperCase();
+
 let correctLetters = [];
 let wrongGuess = true;
 let correctGuesses = 0;
 let wrongLetters = [];
 let guessAmount = 6;
 let wins = 0;
+let losses = 0;
 let placeHolder = [];
-
-// // Project underscores based on the length of the chosen word
-// let generateUnderScore = () => {
-//   for (let i = 0; i < chosenWord.length; i++) {
-//     placeHolder.push('_');
-//   }
-// };
 
 function resetGame() {
   correctLetters = [];
@@ -39,9 +32,10 @@ function resetGame() {
 
   var html = (document.getElementById('incorrect-letters').innerHTML = '');
   var html1 = (document.getElementById('guess-remain').innerHTML = guessAmount);
-  let chosenWord = words[randNum].toUpperCase();
+  // Chosen word?
+  chosenWord = words[Math.floor(Math.random() * words.length)];
   // Project underscores based on the length of the chosen word
-  for (let i = 0; i < chosenWord.length; i++) {
+  for (var i = 0; i < chosenWord.length; i++) {
     placeHolder[i] = '_';
     console.log(placeHolder);
   }
@@ -56,18 +50,45 @@ function resetGame() {
 
 // Game Win Here ****
 function gameWin() {
-  // takes correctGuesses counter and if the amount = chosenWord.length YOU WIN!
-  //alert you win
-  //change image left-img
-  //reload game
-
   wins++;
-  console.log('win number: ' + wins);
+  document.getElementById('wins').innerHTML = wins;
+  console.log('You win!');
+
+  if (chosenWord === 'CROWN') {
+    document.getElementById('left-img').innerHTML =
+      '<img src="./assets/images/crown-chakra.jpg">';
+  }
+  if (chosenWord === 'THIRDEYE') {
+    document.getElementById('left-img').innerHTML =
+      '<img src="./assets/images/thirdeye.jpg">';
+  }
+  if (chosenWord === 'THROAT') {
+    document.getElementById('left-img').innerHTML =
+      '<img src="./assets/images/throat.jpg">';
+  }
+  if (chosenWord === 'HEART') {
+    document.getElementById('left-img').innerHTML =
+      '<img src="./assets/images/heart.jpg">';
+  }
+  if (chosenWord === 'SOLARPLEXUS') {
+    document.getElementById('left-img').innerHTML =
+      '<img src="./assets/images/solarplexus.jpg">';
+  }
+  if (chosenWord === 'SACRAL') {
+    document.getElementById('left-img').innerHTML =
+      '<img src="./assets/images/sacral.jpg">';
+  }
+  if (chosenWord === 'ROOT') {
+    document.getElementById('left-img').innerHTML =
+      '<img src="./assets/images/root.jpg">';
+  }
   spaceBarStart();
 }
 
 //Game Loose Here ****
 function gameLoose() {
+  losses++;
+  document.getElementById('losses').innerHTML = losses;
   spaceBarStart();
 }
 
@@ -75,8 +96,10 @@ function gameLoose() {
 function spaceBarStart() {
   document.querySelector('#space-bar-start').innerHTML =
     'PRESS THE SPACE BAR TO BEGIN!';
+
   document.onkeyup = function(event) {
     if (event.keyCode == 32) {
+      document.getElementById('left-img').innerHTML = '';
       resetGame();
     }
   };
@@ -99,7 +122,7 @@ function startGame() {
     ) {
       console.log('duplicate correct guess or incorrect guess');
     } else {
-      for (let i = 0; i < chosenWord.length; i++) {
+      for (var i = 0; i < chosenWord.length; i++) {
         if (chosenWord.charAt(i) === userGuessUpper) {
           console.log('chosen word at i is: ' + chosenWord[i]);
           placeHolder[i] = userGuessUpper;
